@@ -4,19 +4,49 @@
     height: 150px;
 }
 
-.container {
-    width: 1000px;
-    height: 5000px;
-}
 
+
+.container{
+
+}
 
 .column {
     float: left;
-    width: 8.33%;
-    padding: 10px;
-    height: 80px; /* Should be removed. Only for demonstration */
-    font-size: 30px;
+    width: 100px;
+    padding: 0px;
+    height: 40px; /* Should be removed. Only for demonstration */
+    font-size: 15px;
+    margin: 1px;
+    border-radius: 5px;
+    color: white;
+    background-color: #ababab;
 }
+
+.number {
+    float: left;
+    width: 100px;
+    padding: 0px;
+    height: 40px; /* Should be removed. Only for demonstration */
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 1px;
+    color: white;
+    background-color: #3b3b3b;
+}
+
+.equal {
+    float: left;
+    width: 100px;
+    padding: 0px;
+    height: 40px; /* Should be removed. Only for demonstration */
+    font-size: 15px;
+
+    margin: 1px;
+    color: white;
+    background-color: #7ea9f5;
+}
+
+
 
 /* Clear floats after the columns */
 .row:after {
@@ -25,8 +55,3 @@
     clear: both;
 }
 
-.compare {
-    width: border-box;
-    width: border-box;
-    background-color: #6278ff;
-}

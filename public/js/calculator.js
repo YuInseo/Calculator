@@ -1,25 +1,3 @@
-var a = 0;
-var b = 0;
-
-var c = false;
-
-
-let ADD;
-let SUB;
-let DVIDE;
-let MULTIPLY;
-let DEFAULT;
-
-const compareType = {
-    ADD, SUB, DVIDE, MULTIPLY, DEFAULT
-}
-
-
-var type = compareType.DEFAULT;
-
-
-import {myFunction, number} from './number.js';
-
 /***
  *  새로운 값은 n 변수,
  *  초기 값을 a로 지정하고
@@ -27,6 +5,17 @@ import {myFunction, number} from './number.js';
  *  Equal (=) 버튼을 클릭하면 해당 값들이 타입에 따라
  *  계산이 되어 출력이 되는 형태이다.
  */
+
+var a = 0; //처음 값
+var b = 0; //두번째 값
+
+
+const compareType = {
+    MINUS: "MINUS", ADD: "ADD", SUB: "SUB", DIVIDE: "DIVIDE", MULTIPLY: "MULTIPLY", DEFAULT: "DEFAULT"
+}
+
+let type = compareType.DEFAULT;
+
 
 window.onload = function () {
     let obj = document.getElementById('1');
@@ -92,28 +81,52 @@ window.onload = function () {
         reset()
     }, false);
 
-
+    let m = document.getElementById('multiply');
+    m?.addEventListener("click", function () {
+        reset()
+    }, false);
 }
-
 
 function append(n) {
     let plus = document.getElementsByTagName('h1')[0].innerHTML;
 
-    if (!c) {
-        if (n == 0) { //TODO 0 누를때 처음엔 안눌리게 해야됨. length 로 불러와서 하면 될듯?
-            if (plus.length != 0) {
-                if ((plus.length + 1 <= 16)) {
-                    console.log("0 값이 추가가 되었습니다.")
-                    document.querySelector(".result").append(n.toString());
-                }
-            }
-        } else {
-            if (plus.length == 1 && plus == "0") {
-                $(".result").text(n.toString());
-            } else if ((plus.length + 1 <= 16)) {
+
+    if (n == 0) { //TODO 0 누를때 처음엔 안눌리게 해야됨. length 로 불러와서 하면 될듯?
+        if (plus.length != 1) {
+            if ((plus.length + 1 <= 16)) {
                 document.querySelector(".result").append(n.toString());
+                if (type != compareType.DEFAULT) {
+                    b = plus;
+                } else {
+                    a = plus;
+                }
+
             }
         }
+    } else {
+        if (plus.length == 1 && plus == "0") {
+            $(".result").text(n.toString());
+
+            if (type != compareType.DEFAULT) {
+                b = plus;
+            } else {
+                a = plus;
+            }
+        } else if ((plus.length + 1 <= 16)) {
+            document.querySelector(".result").append(n.toString());
+            if (type != compareType.DEFAULT) {
+                b = plus;
+            } else {
+                a = plus;
+            }
+        }
+    }
+
+    if (type == compareType.DEFAULT) {
+        console.log("a =>" + a);
+    } else {
+        console.log("a =>" + a);
+        console.log("b =>" + b);
     }
 }
 
@@ -123,13 +136,20 @@ function reset() {
 }
 
 function add() {
+    $(".result").text("0");
+
     type = compareType.ADD;
+    console.log(type)
+}
+
+function multiply() {
+    type = compareType.MULTIPLY;
 }
 
 function subtract() {
-
+    type = compareType.SUB;
 }
 
 function divide() {
-
+    type = compareType.DIVIDE;
 }
