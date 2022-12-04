@@ -1,0 +1,32 @@
+.test {
+    background-color: #6278ff;
+    width: 150px;
+    height: 150px;
+}
+
+.container {
+    width: 1000px;
+    height: 5000px;
+}
+
+
+.column {
+    float: left;
+    width: 8.33%;
+    padding: 10px;
+    height: 80px; /* Should be removed. Only for demonstration */
+    font-size: 30px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.compare {
+    width: border-box;
+    width: border-box;
+    background-color: #6278ff;
+}
